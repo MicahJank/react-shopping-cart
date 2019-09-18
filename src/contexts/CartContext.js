@@ -8,9 +8,17 @@ export const CartContextProvider = props => {
 	const addItem = item => {
 		setCart([...cart, item]);
     };
+
+    const removeItem = itemToRemove => {
+        const filteredCart = cart.filter(cartItem => {
+            return itemToRemove.id !== cartItem.id;
+        })
+
+        setCart(filteredCart);
+    }
     
     return (
-        <CartContext.Provider value={{ cart, setCart, addItem }}>
+        <CartContext.Provider value={{ cart, setCart, addItem, removeItem }}>
             {props.children}
         </CartContext.Provider>
     );
