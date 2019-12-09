@@ -19,7 +19,7 @@ const ShoppingCart = () => {
 	return (
 		<div className="shopping-cart">
 			{cart.map(item => (
-				<Item item={item} key={item.id} {...item} />
+				<Item item={item} />
 			))}
 
 			<div className="shopping-cart__checkout">

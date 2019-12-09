@@ -8,12 +8,13 @@ export const CartContextProvider = props => {
     const [cart, setCart] = useLocalStorage("cartItems", []);
 
 	const addItem = item => {
-		setCart([...cart, item]);
+        const itemCartId = cart.length + 1;
+        setCart([...cart, {...item, itemCartId}]);
     };
 
     const removeItem = itemToRemove => {
         const filteredCart = cart.filter(cartItem => {
-            return itemToRemove.id !== cartItem.id;
+            return itemToRemove.itemCartId !== cartItem.itemCartId;
         })
 
         setCart(filteredCart);
